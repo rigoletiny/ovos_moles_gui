@@ -70,6 +70,7 @@ class simulationScreen(QDialog):
         self.param.data.ROIs.Cam2[9][1]  = self.cam2_roi_y_10.value()
         self.param.data.ROIs.Cam2[10][1] = self.cam2_roi_y_11.value()
 
+        self.param.data.ColorThreshold1.threshold = self.tresh_1.value()
         self.param.data.ColorThreshold1.H_upper = self.tresh_1_H_upper.value()
         self.param.data.ColorThreshold1.S_upper = self.tresh_1_S_upper.value()
         self.param.data.ColorThreshold1.V_upper = self.tresh_1_V_upper.value()
@@ -79,6 +80,7 @@ class simulationScreen(QDialog):
         self.param.data.ColorThreshold1.H_upper = self.tresh_2_H_upper.value()
         self.param.data.ColorThreshold1.S_upper = self.tresh_2_S_upper.value()
         self.param.data.ColorThreshold1.V_upper = self.tresh_2_V_upper.value()
+        self.param.data.ColorThreshold2.threshold = self.tresh_2.value()
         self.param.data.ColorThreshold2.H_lower = self.tresh_2_H_lower.value()
         self.param.data.ColorThreshold2.S_lower = self.tresh_2_S_lower.value()
         self.param.data.ColorThreshold2.V_lower = self.tresh_2_V_lower.value()
@@ -100,6 +102,7 @@ class simulationScreen(QDialog):
         self.param.write_settings()
 
     def runSim(self):
+        self.update_param()
         # Start logger
         logger = init_logger()
         # Init section
@@ -182,6 +185,8 @@ class simulationScreen(QDialog):
         self.cam2_roi_y_10.setValue(self.param.data.ROIs.Cam2[9][1])
         self.cam2_roi_y_11.setValue(self.param.data.ROIs.Cam2[10][1])
 
+        self.tresh_1.setValue(self.param.data.ColorThreshold1.threshold)
+
         self.tresh_1_H_upper.setValue(self.param.data.ColorThreshold1.H_upper)
         self.tresh_1_S_upper.setValue(self.param.data.ColorThreshold1.S_upper)
         self.tresh_1_V_upper.setValue(self.param.data.ColorThreshold1.V_upper)
@@ -189,6 +194,8 @@ class simulationScreen(QDialog):
         self.tresh_1_H_lower.setValue(self.param.data.ColorThreshold1.H_lower)
         self.tresh_1_S_lower.setValue(self.param.data.ColorThreshold1.S_lower)
         self.tresh_1_V_lower.setValue(self.param.data.ColorThreshold1.V_lower)
+
+        self.tresh_2.setValue(self.param.data.ColorThreshold2.threshold)
 
         self.tresh_2_H_upper.setValue(self.param.data.ColorThreshold1.H_upper)
         self.tresh_2_S_upper.setValue(self.param.data.ColorThreshold1.S_upper)

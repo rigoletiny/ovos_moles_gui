@@ -160,23 +160,21 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>Simulation</string>
     </property>
    </widget>
-   <widget class="QToolButton" name="parametersButton">
+   <widget class="QCheckBox" name="SaveBox">
     <property name="geometry">
      <rect>
-      <x>1100</x>
-      <y>700</y>
-      <width>81</width>
-      <height>31</height>
+      <x>1010</x>
+      <y>750</y>
+      <width>77</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Parameters</string>
+     <string>Save Img</string>
     </property>
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="resource.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

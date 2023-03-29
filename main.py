@@ -22,10 +22,21 @@ class uiMainWindow(QDialog):
         self.manual_trigger = False
         self.cam_1 = None
         self.cam_2 = None
+        self.image_processor_1 = None
+        self.image_processor_2 = None
         self.start_button.clicked.connect(self.start_main_loop)
         self.manual_trigger_btn.clicked.connect(self.set_manual_trigger)
         self.simButton.clicked.connect(self.go_to_simulation)
+        self.SaveBox.toggled.connect(self.set_saving_images)
+
         # self.start_main_loop()
+
+    def set_saving_images(self):
+        if self.image_processor_1 is not None and self.image_processor_2 is not None:
+            if self.SaveBox.isChecked():
+                self.image_processor_1.save = True
+            else:
+                self.image_processor_1.save = False
 
     def go_to_simulation(self):
         simulation_handler = simulationScreen()
@@ -71,11 +82,11 @@ class uiMainWindow(QDialog):
         t1 = Thread(target=self.plc_handler.StartGrabbing)
         t1.start()
         # Starting loop for reading conditions on PLC to trigger
-        image_processor_1 = DefectsDetector("Cam1", Param.data.ROIs.Cam1, Param.data.ColorThreshold1,
+        self.image_processor_1 = DefectsDetector("Cam1", Param.data.ROIs.Cam1, Param.data.ColorThreshold1,
                                             Param.data.ColorThreshold2, Param.data.Offset_Camera.ref_middle_point_cam1,
                                             Param.data.Offset_Camera.roi_offset_cam1, Param.data.hmi_width,
                                             Param.data.hmi_height, logger)
-        image_processor_2 = DefectsDetector("Cam2", Param.data.ROIs.Cam2, Param.data.ColorThreshold1,
+        self.image_processor_2 = DefectsDetector("Cam2", Param.data.ROIs.Cam2, Param.data.ColorThreshold1,
                                             Param.data.ColorThreshold2, Param.data.Offset_Camera.ref_middle_point_cam2,
                                                      Param.data.Offset_Camera.roi_offset_cam2, Param.data.hmi_width,
                                                      Param.data.hmi_height, logger)
@@ -86,8 +97,8 @@ class uiMainWindow(QDialog):
                 raw_cam2 = self.cam_2.get_image()
 
                 # pre-process Image
-                frame_cam1 = image_processor_1.preprocess(raw_cam1, 0, 0)
-                frame_cam2 = image_processor_1.preprocess(raw_cam2, 0, 0)
+                frame_cam1 = self.image_processor_1.preprocess(raw_cam1, 0, 0)
+                frame_cam2 = self.image_processor_1.preprocess(raw_cam2, 0, 0)
 
                 plc_ready = self.plc_handler.auto_mode and self.plc_handler.artificial_vision and self.plc_handler.trigger
                 cam_ready = self.cam_1.connected and self.cam_2.connected
@@ -96,11 +107,11 @@ class uiMainWindow(QDialog):
                     self.manual_trigger = False
 
                 if (plc_ready or manual_trigger) and cam_ready:
-                    defects_cam_1, frame_painted_defect_cam1 = image_processor_1.process(frame_cam1)
-                    defects_cam_2, frame_painted_defect_cam2 = image_processor_2.process(frame_cam2)
+                    defects_cam_1, frame_painted_defect_cam1 = self.image_processor_1.process(frame_cam1)
+                    defects_cam_2, frame_painted_defect_cam2 = self.image_processor_2.process(frame_cam2)
 
                     # Joining both outputs into one
-                    defects = image_processor_1.join_defects(defects_cam_1, defects_cam_1)
+                    defects = self.image_processor_1.join_defects(defects_cam_1, defects_cam_1)
 
                     # Writing output to PLC
                     self.plc_handler.write_defects(defects)
@@ -109,14 +120,14 @@ class uiMainWindow(QDialog):
                     self.plc_handler.write_flag(True)
 
                     # Displaying processed images
-                    frame_painted_defect_cam1_small = image_processor_1.resize(frame_painted_defect_cam1)
-                    frame_painted_defect_cam2_small = image_processor_2.resize(frame_painted_defect_cam2)
+                    frame_painted_defect_cam1_small = self.image_processor_1.resize(frame_painted_defect_cam1)
+                    frame_painted_defect_cam2_small = self.image_processor_2.resize(frame_painted_defect_cam2)
                     self.setImages(frame_painted_defect_cam1_small, frame_painted_defect_cam2_small)
                     key = cv2.waitKey(1)
                     time.sleep(3)
                 else:
-                    frame_cam1 = image_processor_1.resize(frame_cam1)
-                    frame_cam2 = image_processor_2.resize(frame_cam2)
+                    frame_cam1 = self.image_processor_1.resize(frame_cam1)
+                    frame_cam2 = self.image_processor_2.resize(frame_cam2)
                     self.setImages(frame_cam1, frame_cam2)
                     key = cv2.waitKey(1)
 

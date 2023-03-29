@@ -29,6 +29,7 @@ class DefectsDetector:
         self.show = True
         self.save = False
         self.save_path_img = "workspace/raw_img"
+        self.save_path_img_processed = "workspace/defect_img"
         self.limit_img = 800
         self.debug = False
         self.threshold_presence = 7000
@@ -156,7 +157,7 @@ class DefectsDetector:
             dt_string = self.get_date()
 
             path_img_raw = os.path.join(self.save_path_img, "Image_" + self.name + "_" + dt_string + "_raw.bmp")
-            path_img_defect = os.path.join(self.save_path_img, "Image_" + self.name + "_" + dt_string + "_defect.bmp")
+            path_img_defect = os.path.join(self.save_path_img_processed, "Image_" + self.name + "_" + dt_string + "_defect.bmp")
 
             cv.imwrite(path_img_raw, raw_img)
             cv.imwrite(path_img_defect, defect_img)

@@ -36,6 +36,9 @@ class DefectsDetector:
         self.logger = logger
         self.mask_images = []
         self.load_images()
+
+        self.thresh1 = threshold1.threshold
+        self.thresh2 = threshold2.threshold
         self.blue_lower = np.array([threshold1.H_lower, threshold1.S_lower, threshold1.V_lower], np.uint8)
         self.blue_upper = np.array([threshold1.H_upper, threshold1.S_upper, threshold1.V_upper], np.uint8)
         self.blue2_lower = np.array([threshold2.H_lower, threshold2.S_lower, threshold2.V_lower], np.uint8)
@@ -76,8 +79,8 @@ class DefectsDetector:
         offset_cam1 = self.get_offset(frame_cam, self.roi_offset_cam, self.ref_middle_point_cam)
         # Processing image cam 1
         defects_holes_cam_1 = self.hole_detection(frame_cam)
-        defect_presence_cam_1 = self.presence_detection(frame_cam, self.blue_lower, self.blue_upper, 5000)
-        defect_presence_2_cam_1 = self.presence_detection(frame_cam, self.blue2_lower, self.blue2_upper, 500)
+        defect_presence_cam_1 = self.presence_detection(frame_cam, self.blue_lower, self.blue_upper, self.thresh1)
+        defect_presence_2_cam_1 = self.presence_detection(frame_cam, self.blue2_lower, self.blue2_upper, self.thresh2)
         # Joining all from camera 1 into 1 output
         defects_cam1 = self.join_defects(defects_holes_cam_1, defect_presence_cam_1)
         defects_cam1 = self.join_defects(defects_cam1, defect_presence_2_cam_1)

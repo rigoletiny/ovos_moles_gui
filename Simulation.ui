@@ -147,10 +147,18 @@
      </widget>
     </item>
     <item row="10" column="6">
-     <widget class="QSpinBox" name="tresh_2_V_upper"/>
+     <widget class="QSpinBox" name="tresh_2_V_upper">
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
     </item>
     <item row="10" column="4">
-     <widget class="QSpinBox" name="tresh_2_S_upper"/>
+     <widget class="QSpinBox" name="tresh_2_S_upper">
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
     </item>
     <item row="7" column="6">
      <widget class="QSpinBox" name="tresh_1_V_upper">
@@ -643,6 +651,9 @@
     </item>
     <item row="18" column="0">
      <widget class="QLabel" name="label_38">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Middle Point Cam1</string>
       </property>
@@ -650,6 +661,9 @@
     </item>
     <item row="17" column="0">
      <widget class="QLabel" name="label_37">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Offsets</string>
       </property>
@@ -657,6 +671,9 @@
     </item>
     <item row="18" column="1">
      <widget class="QSpinBox" name="cam1_offset_middle_point">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -674,6 +691,9 @@
     </item>
     <item row="19" column="4">
      <widget class="QSpinBox" name="cam1_offset_4">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -681,6 +701,9 @@
     </item>
     <item row="20" column="0">
      <widget class="QLabel" name="label_40">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -688,6 +711,9 @@
     </item>
     <item row="21" column="0">
      <widget class="QLabel" name="label_42">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Middle Point Cam2</string>
       </property>
@@ -695,6 +721,9 @@
     </item>
     <item row="19" column="3">
      <widget class="QSpinBox" name="cam1_offset_3">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -702,6 +731,9 @@
     </item>
     <item row="19" column="2">
      <widget class="QSpinBox" name="cam1_offset_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -719,6 +751,9 @@
     </item>
     <item row="22" column="3">
      <widget class="QSpinBox" name="cam2_offset_3">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -726,6 +761,9 @@
     </item>
     <item row="22" column="1">
      <widget class="QSpinBox" name="cam2_offset_1">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -740,6 +778,9 @@
     </item>
     <item row="19" column="0">
      <widget class="QLabel" name="label_39">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Offsets Cam1</string>
       </property>
@@ -754,6 +795,9 @@
     </item>
     <item row="21" column="1">
      <widget class="QSpinBox" name="cam2_offset_middle_point">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -761,6 +805,9 @@
     </item>
     <item row="22" column="4">
      <widget class="QSpinBox" name="cam2_offset_4">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -768,6 +815,9 @@
     </item>
     <item row="22" column="0">
      <widget class="QLabel" name="label_41">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Offset Cam2</string>
       </property>
@@ -775,6 +825,9 @@
     </item>
     <item row="19" column="1">
      <widget class="QSpinBox" name="cam1_offset_1">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -789,6 +842,9 @@
     </item>
     <item row="22" column="2">
      <widget class="QSpinBox" name="cam2_offset_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>1280</number>
       </property>
@@ -953,7 +1009,11 @@
      </widget>
     </item>
     <item row="10" column="2">
-     <widget class="QSpinBox" name="tresh_2_H_upper"/>
+     <widget class="QSpinBox" name="tresh_2_H_upper">
+      <property name="maximum">
+       <number>360</number>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_6">
@@ -1069,13 +1129,25 @@
      </widget>
     </item>
     <item row="11" column="2">
-     <widget class="QSpinBox" name="tresh_2_H_lower"/>
+     <widget class="QSpinBox" name="tresh_2_H_lower">
+      <property name="maximum">
+       <number>360</number>
+      </property>
+     </widget>
     </item>
     <item row="11" column="4">
-     <widget class="QSpinBox" name="tresh_2_S_lower"/>
+     <widget class="QSpinBox" name="tresh_2_S_lower">
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
     </item>
     <item row="11" column="6">
-     <widget class="QSpinBox" name="tresh_2_V_lower"/>
+     <widget class="QSpinBox" name="tresh_2_V_lower">
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
     </item>
     <item row="9" column="1">
      <widget class="QLabel" name="label_2">

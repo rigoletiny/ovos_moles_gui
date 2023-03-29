@@ -16,20 +16,21 @@
         "Slot": 1
     },
     "ColorThreshold1":{
-        "H_lower": 106,
-        "S_lower": 7,
-        "V_lower": 4,
         "H_upper": 250,
         "S_upper": 128,
-        "V_upper": 65
+        "V_upper": 65,
+        "H_lower": 106,
+        "S_lower": 7,
+        "V_lower": 4
+
     },
     "ColorThreshold2":{
-        "H_lower": 154,
-        "S_lower": 113,
-        "V_lower": 81,
         "H_upper": 166,
         "S_upper": 132,
-        "V_upper": 97
+        "V_upper": 97,
+        "H_lower": 154,
+        "S_lower": 113,
+        "V_lower": 81
     },
     "ROIs": {
         "Cam1": [[255, 380, 195, 265],

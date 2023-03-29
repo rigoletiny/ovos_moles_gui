@@ -7,7 +7,6 @@ class Settings:
         self.data = None
         self.setting_file = setting_file
         self.read_settings(self.setting_file)
-        # self.write_settings(self.setting_file)
 
     def read_settings(self, setting_file):
         with open(setting_file) as f:

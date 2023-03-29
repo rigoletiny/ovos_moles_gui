@@ -182,8 +182,6 @@ class DefectsDetector:
         list_defects_by_roi = []
         counter = 1
         for r in self.rois:
-            if counter == 7:
-                print("asd")
             # Crop image for each one of the defined rois
             img = cv_image[int(r[1]):int(r[1] + r[3]), int(r[0]):int(r[0] + r[2])]
             # Transforming to grey color
@@ -321,8 +319,12 @@ class DefectsDetector:
             mask_cookie = self.mask_images[counter-1]
             # Using image into cookie image
             if img.shape == mask_cookie.shape:
-                result = cv.bitwise_and(img, mask_cookie)
-                return result
+                mask_gray = cv.cvtColor(mask_cookie, cv.COLOR_BGR2GRAY)
+                # mask the image
+                masked_image = np.copy(img)
+                masked_image[mask_gray == 0] = [255, 255, 255]
+
+                return masked_image
             else:
                 self.logger.info('Cam_name: ' + self.name + ' Counter: '+str(counter))
                 self.logger.info('Img Shape: ' + str(img.shape) + ' Mask Shape: ' + str(mask_cookie.shape))
@@ -336,8 +338,11 @@ class DefectsDetector:
 
     def presence_detection(self, cv_image, blue_lower, blue_upper, threshold):
         # CRACK DETECTION
+        self.debug = True
         list_defects_by_roi = []
         counter = 1
+        # Convert from RGB to HSV
+        cv_image = cv.cvtColor(cv_image, cv.COLOR_BGR2RGB)
         for r in self.rois:
             # Crop image for each one of the defined rois
             img = cv_image[int(r[1]):int(r[1] + r[3]), int(r[0]):int(r[0] + r[2])]
@@ -359,12 +364,12 @@ class DefectsDetector:
             # show the images
             ret, thresh2 = cv.threshold(B, 127, 255, cv.THRESH_BINARY)
 
-            count_blue_pixels = cv.countNonZero(thresh2)
+            count_blue_pixels = cv.countNonZero(mask)
             is_present = count_blue_pixels < threshold
 
             # Show images for debugging
             if self.debug:
-                cv.imshow("images", output)
+                cv.imshow("mask", mask)
                 if cv.waitKey(1) >= 0:
                     break
             if self.debug:
@@ -383,6 +388,8 @@ class DefectsDetector:
 
         if self.debug:
             cv.destroyAllWindows()
+        self.debug = False
+
         return list_defects_by_roi
 
     def get_offset(self, cv_image, r, ref_middle_point):

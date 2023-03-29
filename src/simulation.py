@@ -6,7 +6,7 @@ import cv2, imutils
 from PyQt5.QtGui import QImage
 from PyQt5 import QtGui
 from src import init_logger
-
+import os
 
 class simulationScreen(QDialog):
     def __init__(self):
@@ -127,8 +127,6 @@ class simulationScreen(QDialog):
             raw_cam1 = self.image1
             raw_cam2 = self.image2
             # pre-process Image
-            #frame_cam1 = image_processor_1.preprocess(raw_cam1, 0, 0)
-            #frame_cam2 = image_processor_1.preprocess(raw_cam2, 0, 0)
 
             defects_cam_1, frame_painted_defect_cam1 = image_processor_1.process(raw_cam1)
             defects_cam_2, frame_painted_defect_cam2 = image_processor_2.process(raw_cam2)
@@ -222,7 +220,11 @@ class simulationScreen(QDialog):
         """ This function will load the user selected image
             and set it to label using the setPhoto function
         """
+        self.Status_label.setText("")
         self.filename = QFileDialog.getOpenFileName(filter="Image (*.*)", directory='./workspace/raw_img')[0]
+
+        file_cam1 = None
+        file_cam2 = None
         if "Cam1" in self.filename:
             file_cam1 = self.filename
             file_cam2 = self.filename.replace("Cam1", "Cam2")
@@ -230,12 +232,15 @@ class simulationScreen(QDialog):
             file_cam2 = self.filename
             file_cam1 = self.filename.replace("Cam2", "Cam1")
         else:
-            None
+            self.Status_label.setText("Invalid file")
+        if file_cam1:
+            if os.path.isfile(file_cam1) and os.path.isfile(file_cam2):
+                self.image1 = cv2.imread(file_cam1)
+                self.image2 = cv2.imread(file_cam2)
+                self.setPhoto(self.image1, self.image2)
+            else:
+                self.Status_label.setText("Missing one of the pair images")
 
-        self.image1 = cv2.imread(file_cam1)
-        self.image2 = cv2.imread(file_cam2)
-
-        self.setPhoto(self.image1, self.image2)
 
     def setPhoto(self, image1, image2):
         """ This function will take image input and resize it

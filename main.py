@@ -87,7 +87,7 @@ class uiMainWindow(QDialog):
 
                 # pre-process Image
                 frame_cam1 = image_processor_1.preprocess(raw_cam1, 0, 0)
-                #frame_cam2 = image_processor_1.preprocess(raw_cam2)
+                #frame_cam2 = image_processor_1.preprocess(raw_cam2, 0, 0)
 
                 plc_ready = self.plc_handler.auto_mode and self.plc_handler.artificial_vision and self.plc_handler.trigger
                 cam_ready = self.cam_1.connected #and self.cam_2.connected

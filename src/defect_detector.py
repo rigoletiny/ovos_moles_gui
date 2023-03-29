@@ -341,7 +341,6 @@ class DefectsDetector:
 
     def presence_detection(self, cv_image, blue_lower, blue_upper, threshold):
         # CRACK DETECTION
-        self.debug = True
         list_defects_by_roi = []
         counter = 1
         # Convert from RGB to HSV
@@ -391,7 +390,6 @@ class DefectsDetector:
 
         if self.debug:
             cv.destroyAllWindows()
-        self.debug = False
 
         return list_defects_by_roi
 

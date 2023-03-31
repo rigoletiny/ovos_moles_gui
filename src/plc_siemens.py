@@ -31,11 +31,15 @@ class PLCSiemens:
     def start(self):
         print("PLC Connecting...")
         self.plc = c.Client()
-        self.plc.connect(self.IP, self.RACK, self.SLOT)
+        try:
 
-        self.plc_2 = c.Client()
-        self.plc_2.connect(self.IP, self.RACK, self.SLOT)
-        self.run = True
+            self.plc.connect(self.IP, self.RACK, self.SLOT)
+
+            self.plc_2 = c.Client()
+            self.plc_2.connect(self.IP, self.RACK, self.SLOT)
+            self.run = True
+        except:
+            self.run = False
 
     def connect(self):
         while True:

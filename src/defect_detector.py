@@ -154,6 +154,11 @@ class DefectsDetector:
                 os.remove(os.path.join(self.save_path_img, list_dir_cam2[0]))
                 os.remove(os.path.join(self.save_path_img, list_dir_cam2[1]))
 
+            list_dir_cam2 = os.listdir(self.save_path_img_processed)
+            if len(list_dir_cam2) > self.limit_img:
+                os.remove(os.path.join(self.save_path_img_processed, list_dir_cam2[0]))
+                os.remove(os.path.join(self.save_path_img_processed, list_dir_cam2[1]))
+
             dt_string = self.get_date()
 
             path_img_raw = os.path.join(self.save_path_img, "Image_" + self.name + "_" + dt_string + "_raw.bmp")

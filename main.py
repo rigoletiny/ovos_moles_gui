@@ -11,7 +11,7 @@ from PyQt5.uic import loadUi
 from src import WebCam, PLCSiemens, DefectsDetector, Settings, BaslerCam, init_logger
 import traceback
 from src.simulation import simulationScreen
-
+from PyQt5 import QtCore
 
 
 class uiMainWindow(QDialog):
@@ -24,10 +24,20 @@ class uiMainWindow(QDialog):
         self.cam_2 = None
         self.image_processor_1 = None
         self.image_processor_2 = None
+        self.plc_handler = None
         self.start_button.clicked.connect(self.start_main_loop)
         self.manual_trigger_btn.clicked.connect(self.set_manual_trigger)
         self.simButton.clicked.connect(self.go_to_simulation)
         self.SaveBox.toggled.connect(self.set_saving_images)
+
+
+    def closeConnections(self):
+        if self.cam_1 is not None:
+            self.cam_1.stop()
+        if self.cam_2 is not None:
+            self.cam_2.stop()
+        if self.plc_handler is not None:
+            self.plc_handler.stop()
 
     def set_saving_images(self):
         if self.image_processor_1 is not None and self.image_processor_2 is not None:
@@ -39,7 +49,7 @@ class uiMainWindow(QDialog):
                 self.image_processor_2.save = False
 
     def go_to_simulation(self):
-        simulation_handler = simulationScreen()
+        simulation_handler = simulationScreen(widget)
         widget.addWidget(simulation_handler)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
@@ -156,9 +166,6 @@ class uiMainWindow(QDialog):
 
 
 if __name__ == "__main__":
-    print(sys.getrecursionlimit())
-    # 👇️ set recursion limit to 2000
-    sys.setrecursionlimit(1000)
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = uiMainWindow()
@@ -168,7 +175,8 @@ if __name__ == "__main__":
     widget.setFixedWidth(1024)
     widget.show()
     ui.start_main_loop()
-    sys.exit(app.exec_())
-    # 👇️ 1000
+    app.exec_()
+    ui.closeConnections()
+
 
 

@@ -7,11 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>1024</width>
-    <height>724</height>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="modal">
+   <bool>false</bool>
   </property>
   <widget class="QLabel" name="picture_cam1">
    <property name="geometry">
@@ -74,7 +80,7 @@
   <widget class="QPushButton" name="saveButton">
    <property name="geometry">
     <rect>
-     <x>800</x>
+     <x>730</x>
      <y>650</y>
      <width>93</width>
      <height>28</height>
@@ -87,7 +93,7 @@
   <widget class="QPushButton" name="runButton">
    <property name="geometry">
     <rect>
-     <x>900</x>
+     <x>830</x>
      <y>650</y>
      <width>93</width>
      <height>28</height>
@@ -1226,7 +1232,7 @@
   <widget class="QPushButton" name="openButton">
    <property name="geometry">
     <rect>
-     <x>700</x>
+     <x>630</x>
      <y>650</y>
      <width>93</width>
      <height>28</height>
@@ -1250,6 +1256,19 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="closebtn">
+   <property name="geometry">
+    <rect>
+     <x>930</x>
+     <y>650</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Close</string>
    </property>
   </widget>
  </widget>

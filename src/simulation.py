@@ -9,8 +9,9 @@ from src import init_logger
 import os
 
 class simulationScreen(QDialog):
-    def __init__(self):
+    def __init__(self, widget):
         super(simulationScreen, self).__init__()
+        self.widget = widget
         loadUi("Simulation.ui", self)
         self.param = Settings("general_settings.json")
         self.image1 = None
@@ -21,6 +22,11 @@ class simulationScreen(QDialog):
         self.openButton.clicked.connect(self.loadImage)
         self.runButton.clicked.connect(self.runSim)
         self.saveButton.clicked.connect(self.saveParam)
+        self.closebtn.clicked.connect(self.closethis)
+
+    def closethis(self, event):
+        self.close()
+        self.widget.setCurrentIndex( self.widget.currentIndex() -1)
 
     def update_param(self):
         # TODO find a better way to read this

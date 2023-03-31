@@ -117,11 +117,12 @@ class uiMainWindow(QDialog):
                     self.manual_trigger = False
 
                 if (plc_ready or manual_trigger) and cam_ready:
+                    start_time = time.time()
                     defects_cam_1, frame_painted_defect_cam1 = self.image_processor_1.process(frame_cam1)
                     defects_cam_2, frame_painted_defect_cam2 = self.image_processor_2.process(frame_cam2)
 
                     # Joining both outputs into one
-                    defects = self.image_processor_1.join_defects(defects_cam_1, defects_cam_1)
+                    defects = self.image_processor_1.join_defects(defects_cam_1, defects_cam_2)
 
                     # Writing output to PLC
                     self.plc_handler.write_defects(defects)
@@ -134,6 +135,7 @@ class uiMainWindow(QDialog):
                     frame_painted_defect_cam2_small = self.image_processor_2.resize(frame_painted_defect_cam2)
                     self.setImages(frame_painted_defect_cam1_small, frame_painted_defect_cam2_small)
                     key = cv2.waitKey(1)
+                    self.timelabel.setText("Time: %s" %(time.time() - start_time))
                     time.sleep(3)
                 else:
                     frame_cam1 = self.image_processor_1.resize(frame_cam1)

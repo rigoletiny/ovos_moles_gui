@@ -121,6 +121,9 @@
     </property>
     <item row="10" column="5">
      <widget class="QLabel" name="label_36">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>V</string>
       </property>
@@ -128,6 +131,9 @@
     </item>
     <item row="10" column="1">
      <widget class="QLabel" name="label_34">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>H</string>
       </property>
@@ -135,6 +141,9 @@
     </item>
     <item row="10" column="6">
      <widget class="QSpinBox" name="tresh_2_V_upper">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>255</number>
       </property>
@@ -142,6 +151,9 @@
     </item>
     <item row="10" column="4">
      <widget class="QSpinBox" name="tresh_2_S_upper">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>255</number>
       </property>
@@ -387,6 +399,9 @@
     </item>
     <item row="10" column="3">
      <widget class="QLabel" name="label_35">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>S</string>
       </property>
@@ -990,6 +1005,9 @@
     </item>
     <item row="9" column="0">
      <widget class="QLabel" name="label_33">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Color Threshold 2</string>
       </property>
@@ -997,6 +1015,9 @@
     </item>
     <item row="10" column="2">
      <widget class="QSpinBox" name="tresh_2_H_upper">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>360</number>
       </property>
@@ -1073,6 +1094,9 @@
     </item>
     <item row="11" column="1">
      <widget class="QLabel" name="label_60">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>H</string>
       </property>
@@ -1080,6 +1104,9 @@
     </item>
     <item row="10" column="0">
      <widget class="QLabel" name="label_61">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
@@ -1093,6 +1120,9 @@
     </item>
     <item row="11" column="0">
      <widget class="QLabel" name="label_62">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Lower</string>
       </property>
@@ -1103,6 +1133,9 @@
     </item>
     <item row="11" column="3">
      <widget class="QLabel" name="label_63">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>S</string>
       </property>
@@ -1110,6 +1143,9 @@
     </item>
     <item row="11" column="5">
      <widget class="QLabel" name="label_64">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>V</string>
       </property>
@@ -1117,6 +1153,9 @@
     </item>
     <item row="11" column="2">
      <widget class="QSpinBox" name="tresh_2_H_lower">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>360</number>
       </property>
@@ -1124,6 +1163,9 @@
     </item>
     <item row="11" column="4">
      <widget class="QSpinBox" name="tresh_2_S_lower">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>255</number>
       </property>
@@ -1131,6 +1173,9 @@
     </item>
     <item row="11" column="6">
      <widget class="QSpinBox" name="tresh_2_V_lower">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>255</number>
       </property>
@@ -1138,6 +1183,9 @@
     </item>
     <item row="9" column="1">
      <widget class="QLabel" name="label_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Thresh</string>
       </property>
@@ -1148,6 +1196,9 @@
     </item>
     <item row="9" column="2">
      <widget class="QSpinBox" name="tresh_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="maximum">
        <number>99999</number>
       </property>

@@ -29,8 +29,6 @@ class uiMainWindow(QDialog):
         self.simButton.clicked.connect(self.go_to_simulation)
         self.SaveBox.toggled.connect(self.set_saving_images)
 
-        #self.start_main_loop()
-
     def set_saving_images(self):
         if self.image_processor_1 is not None and self.image_processor_2 is not None:
             if self.SaveBox.isChecked():
@@ -169,6 +167,7 @@ if __name__ == "__main__":
     widget.setFixedHeight(723)
     widget.setFixedWidth(1024)
     widget.show()
+    ui.start_main_loop()
     sys.exit(app.exec_())
     # 👇️ 1000
 

@@ -172,6 +172,9 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
     <property name="text">
      <string>Save Img</string>
     </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
    </widget>
   </widget>
  </widget>

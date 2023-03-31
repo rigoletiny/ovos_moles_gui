@@ -156,12 +156,18 @@ class uiMainWindow(QDialog):
 
 
 if __name__ == "__main__":
+    print(sys.getrecursionlimit())
+    # 👇️ set recursion limit to 2000
+    sys.setrecursionlimit(1000)
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = uiMainWindow()
     widget = QStackedWidget()
     widget.addWidget(ui)
-    widget.setFixedHeight(800)
-    widget.setFixedWidth(1200)
+    widget.setFixedHeight(723)
+    widget.setFixedWidth(1024)
     widget.show()
     sys.exit(app.exec_())
+    # 👇️ 1000
+
+

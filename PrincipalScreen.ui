@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>800</height>
+    <width>1024</width>
+    <height>723</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
-     <height>800</height>
+     <width>1024</width>
+     <height>721</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -92,8 +92,8 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QPushButton" name="start_button">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>690</y>
+      <x>90</x>
+      <y>550</y>
       <width>93</width>
       <height>28</height>
      </rect>
@@ -105,7 +105,7 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QLabel" name="img_box1">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>0</x>
       <y>120</y>
       <width>512</width>
       <height>384</height>
@@ -121,7 +121,7 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QLabel" name="img_box2">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>520</x>
       <y>120</y>
       <width>512</width>
       <height>384</height>
@@ -137,8 +137,8 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QPushButton" name="manual_trigger_btn">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>690</y>
+      <x>230</x>
+      <y>550</y>
       <width>111</width>
       <height>28</height>
      </rect>
@@ -150,8 +150,8 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QToolButton" name="simButton">
     <property name="geometry">
      <rect>
-      <x>1006</x>
-      <y>700</y>
+      <x>916</x>
+      <y>560</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -163,8 +163,8 @@ font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
    <widget class="QCheckBox" name="SaveBox">
     <property name="geometry">
      <rect>
-      <x>1010</x>
-      <y>750</y>
+      <x>920</x>
+      <y>610</y>
       <width>77</width>
       <height>20</height>
      </rect>

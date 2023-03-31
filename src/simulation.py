@@ -248,12 +248,12 @@ class simulationScreen(QDialog):
             to set at the label.
         """
         # Setting Image 1
-        image1 = imutils.resize(image1, width=512, height=384)
+        image1 = imutils.resize(image1, width=381, height=261)
         frame1 = cv2.cvtColor(image1, cv2.COLOR_BGR2RGB)
         image1 = QImage(frame1, frame1.shape[1], frame1.shape[0], frame1.strides[0], QImage.Format_RGB888)
         self.picture_cam1.setPixmap(QtGui.QPixmap.fromImage(image1))
         # Setting Image 2
-        image2 = imutils.resize(image2, width=512, height=384)
+        image2 = imutils.resize(image2, width=381, height=261)
         frame2 = cv2.cvtColor(image2, cv2.COLOR_BGR2RGB)
         image2 = QImage(frame2, frame2.shape[1], frame2.shape[0], frame2.strides[0], QImage.Format_RGB888)
         self.picture_cam2.setPixmap(QtGui.QPixmap.fromImage(image2))

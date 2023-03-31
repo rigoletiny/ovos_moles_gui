@@ -124,7 +124,7 @@ class PLCSiemens:
 
     def write_flag(self, flag):
         if self.run:
-            self.WriteMemory(self.plc_handler.plc_2, 720, 5, S7WLBit, flag)
+            self.WriteMemory(self.plc_2, 720, 5, S7WLBit, flag)
         else:
             print("Unable to Write Flag to the PLC.")
 

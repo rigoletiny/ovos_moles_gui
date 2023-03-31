@@ -29,14 +29,16 @@ class uiMainWindow(QDialog):
         self.simButton.clicked.connect(self.go_to_simulation)
         self.SaveBox.toggled.connect(self.set_saving_images)
 
-        # self.start_main_loop()
+        #self.start_main_loop()
 
     def set_saving_images(self):
         if self.image_processor_1 is not None and self.image_processor_2 is not None:
             if self.SaveBox.isChecked():
                 self.image_processor_1.save = True
+                self.image_processor_2.save = True
             else:
                 self.image_processor_1.save = False
+                self.image_processor_2.save = False
 
     def go_to_simulation(self):
         simulation_handler = simulationScreen()

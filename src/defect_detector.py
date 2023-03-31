@@ -77,14 +77,14 @@ class DefectsDetector:
         return frame_cam1
 
     def process(self, frame_cam):
-        offset_cam1 = self.get_offset(frame_cam, self.roi_offset_cam, self.ref_middle_point_cam)
+        #offset_cam1 = self.get_offset(frame_cam, self.roi_offset_cam, self.ref_middle_point_cam)
         # Processing image cam 1
-        defects_holes_cam_1 = self.hole_detection(frame_cam)
+        #defects_holes_cam_1 = self.hole_detection(frame_cam)
         defect_presence_cam_1 = self.presence_detection(frame_cam, self.blue_lower, self.blue_upper, self.thresh1)
-        defect_presence_2_cam_1 = self.presence_detection(frame_cam, self.blue2_lower, self.blue2_upper, self.thresh2)
+        #defect_presence_2_cam_1 = self.presence_detection(frame_cam, self.blue2_lower, self.blue2_upper, self.thresh2)
         # Joining all from camera 1 into 1 output
-        defects_cam1 = self.join_defects(defects_holes_cam_1, defect_presence_cam_1)
-        defects_cam1 = self.join_defects(defects_cam1, defect_presence_2_cam_1)
+        #defects_cam1 = self.join_defects(defects_holes_cam_1, defect_presence_cam_1)
+        defects_cam1 = self.join_defects(defect_presence_cam_1, defect_presence_cam_1)
         # Full mode include cracks detection
         if self.full_mode:
             defect_cracks_cam_1 = self.crack_detection(frame_cam)
